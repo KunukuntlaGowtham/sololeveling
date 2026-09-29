@@ -29,3 +29,9 @@ jobs:
         with:
           name: a11y-dummy-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+      - name: Publish APK release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete a11y-latest --yes --cleanup-tag || true
+          gh release create a11y-latest app/build/outputs/apk/debug/app-debug.apk#A11yDummyAutomation-debug.apk --target "$GITHUB_SHA" --title "A11y Dummy APK (debug)" --notes "Debug build from $GITHUB_SHA" --prerelease
