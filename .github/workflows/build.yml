@@ -1,5 +1,8 @@
 name: Build A11y Dummy APK
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [a11y-dummy-automation]
 jobs:
   build:
     runs-on: ubuntu-latest
