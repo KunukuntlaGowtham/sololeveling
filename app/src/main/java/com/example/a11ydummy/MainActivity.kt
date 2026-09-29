@@ -65,7 +65,7 @@ class MainActivity : android.app.Activity() {
     private fun updateCounters() { counter.text = "Checked: $checked / 15"; counter.contentDescription = "Checked $checked of 15"; popupCounter.text = "Popups dismissed: $dismissed / 15" }
     private fun resetAll() { checked = 0; dismissed = 0; adapter.reset(); updateCounters(); recycler.scrollToPosition(0) }
 
-    private inner class PersonAdapter(private val people: List<Person>) : RecyclerView.Adapter<PersonVH>() {
+    private inner class PersonAdapter(private val people: List<Person>) : RecyclerView.Adapter<MainActivity.PersonAdapter.PersonVH>() {
         private val states = BooleanArray(people.size)
         override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): PersonVH = PersonVH(makeCard())
         override fun getItemCount() = people.size
